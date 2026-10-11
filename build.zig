@@ -23,7 +23,7 @@ pub fn build(b: *std.Build) void {
     init_step.dependOn(&init_cmd.step);
 
     for (1..13) |day| {
-        const day_name = b.fmt("day_{d:0>2}", .{day});
+        const day_name = b.fmt("day-{d:0>2}", .{day});
         const day_path = b.fmt("{s}/main.zig", .{day_name});
         const day_exe = b.addExecutable(.{
             .name = day_name,

@@ -58,7 +58,7 @@ pub fn run(gpa: Allocator, io: Io) !void {
 
     for (1..13) |day| {
         var path_buffer: [6]u8 = undefined;
-        const day_path = try std.fmt.bufPrint(&path_buffer, "day_{d:0>2}", .{day});
+        const day_path = try std.fmt.bufPrint(&path_buffer, "day-{d:0>2}", .{day});
         if (!try exists(io, cwd, day_path)) {
             try cwd.createDir(io, day_path, .default_dir);
         }
