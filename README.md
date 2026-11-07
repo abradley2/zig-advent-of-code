@@ -1,6 +1,8 @@
 # Zig Advent Of Code
 
-Requires Zig 0.17.0. I recommend using [Anyzig](https://marler8997.github.io/anyzig/)
+Requires Zig >= v0.17.0
+
+I recommend using [Anyzig](https://marler8997.github.io/anyzig/)
 
 After cloning this repo, initialize the project with `zig build init`
 This will create folders `day-01` to `day-12` and empty input.txt files
@@ -13,7 +15,8 @@ This also installs that day's executable to `zig-out/bin/day-XX` in the project 
 ```bash
 # Run day 1, part 1
 zig build run-day-01 -- --part=1
-
+```
+```bash
 # Run day 12, part 2
 zig build run-day-12 -- --part=2
 ```
