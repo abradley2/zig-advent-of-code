@@ -23,6 +23,9 @@ zig build run-day-12 -- --part=2
 
 To build and install all days without running them, use `zig build`. Then execute a day via the binary
 ```bash
+zig build
+```
+```bash
 ./zig-out/bin/day-01 --part=1
 ```
 
