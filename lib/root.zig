@@ -26,25 +26,26 @@ pub fn solve(
     var stdout = std.Io.File.stdout().writer(io, &output_buffer);
     const writer = &stdout.interface;
 
-    switch (try readSolutionPart(args)) {
-        .one => try solution.part_one(allocator, writer, input),
-        .two => try solution.part_two(allocator, writer, input),
-    }
+    if (readSolutionPart(args, writer)) |solution_part|
+        switch (solution_part) {
+            .one => try solution.part_one(allocator, writer, input),
+            .two => try solution.part_two(allocator, writer, input),
+        };
+
     _ = try writer.write("\n");
     try writer.flush();
 }
 
-pub fn readSolutionPart(args: Args) error{
-    InvalidSolutionPart,
-    MissingSolutionPart,
-}!SolutionPart {
+pub fn readSolutionPart(args: Args, writer: *Io.Writer) ?SolutionPart {
     var args_iter = args.iterate();
     while (args_iter.next()) |arg| {
         if (std.mem.cutPrefix(u8, arg, "--part=")) |part| {
             if (std.mem.eql(u8, part, "1")) return .one;
             if (std.mem.eql(u8, part, "2")) return .two;
-            return error.InvalidSolutionPart;
+            writer.print("'--part' must specify '1' or '2' but got: {s}\n", .{part}) catch {};
+            return null;
         }
     }
-    return error.MissingSolutionPart;
+    _ = writer.write("must specify --part=1 or --part=2\n") catch 0;
+    return null;
 }

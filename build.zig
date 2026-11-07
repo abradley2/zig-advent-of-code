@@ -37,8 +37,15 @@ pub fn build(b: *std.Build) void {
             }),
         });
 
-        const run_day_step = b.step(day_name, b.fmt("Run {s}", .{day_name}));
+        const install_day = b.addInstallArtifact(day_exe, .{});
+        b.getInstallStep().dependOn(&install_day.step);
+
+        const run_day_step = b.step(
+            b.fmt("run-{s}", .{day_name}),
+            b.fmt("Run {s}", .{day_name}),
+        );
         const run_day_cmd = b.addRunArtifact(day_exe);
+        run_day_cmd.step.dependOn(&install_day.step);
         run_day_cmd.addPassthruArgs();
         run_day_step.dependOn(&init_cmd.step);
         run_day_step.dependOn(&run_day_cmd.step);

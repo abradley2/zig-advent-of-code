@@ -22,7 +22,7 @@ const template =
     \\    var output: std.Io.Writer = .fixed(&output_buffer);
     \\
     \\    try partOne(std.testing.allocator, &output, "");
-    \\    try std.testing.expectEqualStrings("<expected>", output.buffered());
+    \\    // try std.testing.expectEqualStrings("<expected>", output.buffered());
     \\}
     \\
     \\pub fn partOne(allocator: Allocator, output: *std.Io.Writer, input: []const u8) !void {
@@ -36,7 +36,7 @@ const template =
     \\    var output: std.Io.Writer = .fixed(&output_buffer);
     \\
     \\    try partTwo(std.testing.allocator, &output, "");
-    \\    try std.testing.expectEqualStrings("<expected>", output.buffered());
+    \\    // try std.testing.expectEqualStrings("<expected>", output.buffered());
     \\}
     \\
     \\pub fn partTwo(allocator: Allocator, output: *std.Io.Writer, input: []const u8) !void {
