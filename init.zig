@@ -42,7 +42,7 @@ const template =
     \\pub fn partTwo(allocator: Allocator, output: *std.Io.Writer, input: []const u8) !void {
     \\    _ = allocator;
     \\    _ = input;
-    \\    _ = try output.writeAll("Not Implemented");
+    \\    try output.writeAll("Not Implemented");
     \\}
     \\
     \\pub fn main(init: std.process.Init) !void {
