@@ -25,10 +25,9 @@ const template =
     \\    // try std.testing.expectEqualStrings("<expected>", output.buffered());
     \\}
     \\
-    \\pub fn partOne(allocator: Allocator, output: *std.Io.Writer, input: []const u8) !void {
-    \\    _ = allocator;
+    \\pub fn partOne(_: Allocator, output_writer: *std.Io.Writer, input: []const u8) !void {
     \\    _ = input;
-    \\    try output.writeAll("Not Implemented");
+    \\    try output_writer.print("Not Implemented", .{});
     \\}
     \\
     \\test "Part Two" {
@@ -39,10 +38,9 @@ const template =
     \\    // try std.testing.expectEqualStrings("<expected>", output.buffered());
     \\}
     \\
-    \\pub fn partTwo(allocator: Allocator, output: *std.Io.Writer, input: []const u8) !void {
-    \\    _ = allocator;
+    \\pub fn partTwo(_: Allocator, output_writer: *std.Io.Writer, input: []const u8) !void {
     \\    _ = input;
-    \\    try output.writeAll("Not Implemented");
+    \\    try output_writer.print("Not Implemented", .{});
     \\}
     \\
     \\pub fn main(init: std.process.Init) !void {
